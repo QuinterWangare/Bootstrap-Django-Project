@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<h1>Testimonials</h1>
+<a href="{% url 'create_testimonial' %}">Add New Testimonial</a>
+<ul>
+    {% for testimonial in testimonials %}
+        <li>
+            <strong>{{ testimonial.name }}</strong> - {{ testimonial.position }}
+            <p>{{ testimonial.description }}</p>
+            <img src="{{ testimonial.image.url }}" alt="Image" />
+            <a href="{% url 'update_testimonial' testimonial.pk %}">Edit</a>
+            <a href="{% url 'delete_testimonial' testimonial.pk %}">Delete</a>
+        </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
